@@ -15,3 +15,10 @@ def test_search_article():
         browser.all(
             (AppiumBy.ID, 'org.wikipedia.alpha:id/page_list_item_title')
         ).should(have.size_greater_than(0))
+    with allure.step("Open_article"):
+        browser.all(
+            (AppiumBy.ID, 'org.wikipedia.alpha:id/page_list_item_title')
+        ).first.click()
+        browser.element(
+            (AppiumBy.ID, 'org.wikipedia.alpha:id/view_wiki_error_text')
+        ).should(have.text('An error occurred'))
